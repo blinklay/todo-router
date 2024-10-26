@@ -1,0 +1,19 @@
+.menu-list {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.menu-item {
+  text-align: center;
+}
+
+.link {
+  padding: 10px;
+  width: 100%;
+  display: inline-block;
+  background-color: #232323;
+}
+
+.link .active {
+  background-color: red;
+}

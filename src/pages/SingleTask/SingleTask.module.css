@@ -1,0 +1,16 @@
+.header {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.description {
+  margin-top: 20px;
+  opacity: 0.8;
+}
+
+.edit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

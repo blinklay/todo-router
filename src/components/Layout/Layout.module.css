@@ -1,0 +1,16 @@
+.wrapper {
+  display: flex;
+  height: 100%;
+}
+
+.menu {
+  background-color: var(--color-background-menu);
+  height: 100vh;
+  min-width: 300px;
+  padding: 20px 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid #707070;
+}
