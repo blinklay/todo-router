@@ -11,6 +11,7 @@ export default function Layout() {
       <div
         style={{
           padding: "40px",
+          width: "100%",
         }}
       >
         <Outlet />

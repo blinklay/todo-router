@@ -1,0 +1,46 @@
+.title {
+  font-size: 21px;
+  padding: 10px 20px;
+  background-color: var(--color-background-menu);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 60px -12px inset;
+  width: 100%;
+}
+
+.form {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.title::placeholder {
+  color: inherit;
+  font-weight: 400;
+}
+
+.description {
+  padding: 10px 20px;
+  background-color: var(--color-background-menu);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 60px -12px inset;
+  width: 100%;
+  font-size: 16px;
+  margin-top: 10px;
+  color: inherit;
+}
+
+.submit {
+  padding: 10px 15px;
+  margin-top: 20px;
+  background-color: var(--color-success);
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+.submit:disabled,
+.description:disabled,
+.title:disabled {
+  opacity: 0.5;
+  cursor: default;
+}

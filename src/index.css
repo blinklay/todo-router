@@ -2,6 +2,8 @@
   --color-text: #fff;
   --color-background: #2d2d2d;
   --color-background-menu: #171717;
+  --color-border: #707070;
+  --color-success: #2dcb10;
 }
 
 * {
@@ -20,7 +22,8 @@ body {
 }
 
 input,
-button {
+button,
+textarea {
   background-color: transparent;
   font-family: inherit;
   font-size: inherit;
@@ -28,8 +31,13 @@ button {
   color: inherit;
 }
 
-input {
+input,
+textarea {
   outline: none;
+}
+
+textarea {
+  resize: none;
 }
 
 ul {
