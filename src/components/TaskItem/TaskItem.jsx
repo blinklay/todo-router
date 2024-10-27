@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "./TaskItem.module.css";
+import { MdDelete } from "react-icons/md";
+import Loader from "../Loader/Loader";
 
 const changeLengthText = (text, limit) => {
   if (text.length > limit) {
@@ -9,9 +11,22 @@ const changeLengthText = (text, limit) => {
   return text;
 };
 
-export default function TaskItem({ id, title, description }) {
+export default function TaskItem({
+  id,
+  title,
+  description,
+  removeTask,
+  isDeleting,
+}) {
   return (
-    <li className={styled["task"]}>
+    <li
+      className={`${styled["task"]}`}
+      style={{
+        opacity: isDeleting ? "0.5" : "1",
+        cursor: isDeleting ? "default" : "pointer",
+        pointerEvents: isDeleting ? "none" : "default",
+      }}
+    >
       <Link className={styled.link} to={`/${id}`}>
         <h3>{changeLengthText(title, 15)}</h3>
 
@@ -19,6 +34,9 @@ export default function TaskItem({ id, title, description }) {
           {changeLengthText(description, 65)}
         </div>
       </Link>
+      <button onClick={() => removeTask(id)} className={styled.remove}>
+        <MdDelete />
+      </button>
     </li>
   );
 }

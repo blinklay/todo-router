@@ -32,6 +32,8 @@ const SERVER_DATA = [
 export default function Home() {
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [refreshPage, setRefreshPage] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -39,14 +41,35 @@ export default function Home() {
       .then((res) => res.json())
       .then((data) => setTasks(data))
       .finally(() => setIsLoading(false));
-  }, []);
+  }, [refreshPage]);
+
+  const removeTask = (id) => {
+    setIsDeleting(true);
+
+    fetch(`http://localhost:3000/tasks/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then(() => setRefreshPage(!refreshPage))
+      .finally(() => {
+        setIsDeleting(false);
+      });
+  };
 
   return (
     <div className={styled["home"]}>
       <h1 className={styled["title"]}>Главная</h1>
 
       {isLoading && <div className={styled.loader}></div>}
-      {!isLoading && <TasksList tasks={tasks} />}
+      {!isLoading && (
+        <TasksList
+          isDeleting={isDeleting}
+          tasks={tasks}
+          removeTask={removeTask}
+        />
+      )}
+
+      {!isLoading && tasks.length === 0 && <div>Пока ничего нет...</div>}
     </div>
   );
 }
