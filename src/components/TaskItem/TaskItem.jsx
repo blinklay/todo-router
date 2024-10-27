@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "./TaskItem.module.css";
 import { MdDelete } from "react-icons/md";
-import Loader from "../Loader/Loader";
 
 const changeLengthText = (text, limit) => {
   if (text.length > limit) {
