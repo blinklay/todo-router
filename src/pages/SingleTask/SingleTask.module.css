@@ -86,7 +86,9 @@
 .save:disabled,
 .cancel:disabled,
 .title-change:disabled,
-.description-change:disabled {
+.description-change:disabled,
+.edit:disabled,
+.remove:disabled {
   opacity: 0.8;
   cursor: default;
   pointer-events: none;

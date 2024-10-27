@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "./SingleTask.module.css";
 import { useEffect, useState } from "react";
 import Loader from "../../components/Loader/Loader";
@@ -7,10 +7,12 @@ import { MdDelete } from "react-icons/md";
 
 export default function SingleTask() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   const [info, setInfo] = useState(null);
   const [isChanging, setIsChanging] = useState(false);
   const [isSubmit, setIsSubmit] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -51,6 +53,17 @@ export default function SingleTask() {
     });
   };
 
+  const removeTask = (id) => {
+    setIsDeleting(true);
+
+    fetch(`http://localhost:3000/tasks/${id}`, {
+      method: "DELETE",
+    }).finally(() => {
+      setIsDeleting(false);
+      navigate("/");
+    });
+  };
+
   return (
     <div className={styled["single-page"]}>
       {isLoading && <Loader />}
@@ -59,7 +72,7 @@ export default function SingleTask() {
           {isChanging ? (
             <form className={styled.from} onSubmit={submitChanges}>
               <input
-              disabled={isSubmit}
+                disabled={isSubmit}
                 onChange={(e) =>
                   setFormData({ ...formData, title: e.target.value })
                 }
@@ -70,7 +83,7 @@ export default function SingleTask() {
                 placeholder="Название задачи"
               />
               <textarea
-              disabled={isSubmit}
+                disabled={isSubmit}
                 onChange={(e) =>
                   setFormData({ ...formData, description: e.target.value })
                 }
@@ -107,13 +120,27 @@ export default function SingleTask() {
           )}
           {!isChanging && (
             <div className={styled.actions}>
-              <button onClick={changeMode} className={styled.edit}>
+              <button
+                disabled={isDeleting}
+                onClick={changeMode}
+                className={styled.edit}
+              >
                 <CiEdit />
                 Изменить
               </button>
-              <button className={styled.remove}>
-                <MdDelete />
-                Удалить
+              <button
+                disabled={isDeleting}
+                onClick={() => removeTask(id)}
+                className={styled.remove}
+              >
+                {isDeleting ? (
+                  <Loader />
+                ) : (
+                  <>
+                    <MdDelete />
+                    Удалить
+                  </>
+                )}
               </button>
             </div>
           )}
