@@ -13,6 +13,7 @@ export default function SingleTask() {
   const [isChanging, setIsChanging] = useState(false);
   const [isSubmit, setIsSubmit] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -27,6 +28,12 @@ export default function SingleTask() {
           title: data.title,
           description: data.description,
         });
+        if (Object.keys(data).length === 0) {
+          throw new Error("Content not found! 404");
+        }
+      })
+      .catch((e) => {
+        setIsError(e.message);
       })
       .finally(() => setIsLoading(false));
   }, [isSubmit]);
@@ -67,7 +74,8 @@ export default function SingleTask() {
   return (
     <div className={styled["single-page"]}>
       {isLoading && <Loader />}
-      {!isLoading && (
+      {isError && <div>{isError}</div>}
+      {!isLoading && Object.keys(info).length !== 0 && (
         <>
           {isChanging ? (
             <form className={styled.from} onSubmit={submitChanges}>

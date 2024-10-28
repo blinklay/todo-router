@@ -26,7 +26,7 @@ export default function TaskItem({
         pointerEvents: isDeleting ? "none" : "default",
       }}
     >
-      <Link className={styled.link} to={`/${id}`}>
+      <Link className={styled.link} to={`/tasks/${id}`}>
         <h3>{changeLengthText(title, 15)}</h3>
 
         <div className={styled["description"]}>
