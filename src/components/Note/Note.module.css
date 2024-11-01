@@ -1,0 +1,12 @@
+.note {
+  height: 140px;
+  padding: 20px 10px;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.text {
+  max-height: 110px;
+  overflow: auto;
+  color: var(--color-text);
+}

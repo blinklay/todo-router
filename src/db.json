@@ -1,10 +1,22 @@
 {
-  "tasks": [
+  "notes": [
     {
-      "title": "123",
-      "description": "123 321",
-      "date": "28.10.2024",
-      "id": 3
+      "id": 0,
+      "text": "uptatibus, id minima est, sint quos, quia saepe recusandae esse similique vel ea cum voluptatum officiis veritatis commodi ratione veniam!",
+      "isImportant": false,
+      "color": "#fec971"
+    },
+    {
+      "id": 1,
+      "text": "uptatibus, id minima est, sint quos, quia saepe recusandae esse similique vel ea cum voluptatum officiis veritatis commodi ratione veniam!",
+      "isImportant": false,
+      "color": "#fe9b72"
+    },
+    {
+      "id": 2,
+      "text": "uptatibus, id minima est, sint quos, quia saepe recusandae esse similique vel ea cum voluptatum officiis veritatis commodi ratione veniam!",
+      "isImportant": false,
+      "color": "#e3ef8f"
     }
   ]
 }

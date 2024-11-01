@@ -1,0 +1,12 @@
+.add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 45px;
+  width: 45px;
+  background-color: var(--color-text);
+  border-radius: 50%;
+  color: var(--color-background);
+  font-size: 32px;
+}

@@ -1,10 +1,7 @@
 :root {
-  --color-text: #fff;
-  --color-background: #2d2d2d;
-  --color-background-menu: #171717;
-  --color-border: #707070;
-  --color-success: #2dcb10;
-  --color-danger: #cb1310;
+  --color-background: #fff;
+  --color-text: #151515;
+  --color-separator: #e9edf1;
 }
 
 * {
@@ -16,33 +13,18 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;
-  line-height: 1.2;
+  height: 100vh;
   color: var(--color-text);
   background-color: var(--color-background);
-  height: 100vh;
 }
 
-input,
 button,
-textarea {
-  background-color: transparent;
-  font-family: inherit;
-  font-size: inherit;
+input {
   border: none;
+  background-color: transparent;
+  font-size: inherit;
+  font-family: inherit;
   color: inherit;
-}
-
-input,
-textarea {
-  outline: none;
-}
-
-textarea {
-  resize: none;
-}
-
-ul {
-  list-style: none;
 }
 
 button {
@@ -50,10 +32,20 @@ button {
 }
 
 a {
-  color: inherit;
   text-decoration: none;
+  font-family: inherit;
+  font-size: inherit;
 }
 
-.active {
-  background-color: var(--color-background) !important;
+input {
+  outline: none;
+}
+
+ul {
+  list-style: none;
+}
+
+#root {
+  display: flex;
+  height: 100%;
 }

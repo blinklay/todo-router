@@ -1,21 +1,14 @@
 import { Outlet } from "react-router-dom";
-import MenuList from "../MenuList/MenuList";
 import styled from "./Layout.module.css";
-
+import Menu from "../Menu/Menu";
 export default function Layout() {
   return (
-    <div className={`${styled["wrapper"]}`}>
-      <div className={styled["menu"]}>
-        <MenuList />
-      </div>
-      <div
-        style={{
-          padding: "40px",
-          width: "100%",
-        }}
-      >
+    <>
+      <Menu />
+
+      <div className={styled.main}>
         <Outlet />
       </div>
-    </div>
+    </>
   );
 }
