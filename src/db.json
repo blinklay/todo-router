@@ -1,22 +1,22 @@
 {
   "notes": [
     {
-      "id": 0,
-      "text": "uptatibus, id minima est, sint quos, quia saepe recusandae esse similique vel ea cum voluptatum officiis veritatis commodi ratione veniam!",
+      "text": "uptatibus, id minima est, sint quos, quia saepe recusandae esse similique vestay stay here\n",
       "isImportant": false,
-      "color": "#fec971"
+      "color": "#fec971",
+      "id": 0
     },
     {
-      "id": 1,
-      "text": "uptatibus, id minima est, sint quos, quia saepe recusandae esse similique vel ea cum voluptatum officiis veritatis commodi ratione veniam!",
-      "isImportant": false,
-      "color": "#fe9b72"
+      "text": "id minima est, sint quos, quia saepe re",
+      "isImportant": true,
+      "color": "#fe9b72",
+      "id": 1
     },
     {
-      "id": 2,
-      "text": "uptatibus, id minima est, sint quos, quia saepe recusandae esse similique vel ea cum voluptatum officiis veritatis commodi ratione veniam!",
+      "text": "uptatibus, id minima est, sint quos, quia saepe recusandae esse similique vlo lo lol o",
       "isImportant": false,
-      "color": "#e3ef8f"
+      "color": "#e3ef8f",
+      "id": 2
     }
   ]
 }

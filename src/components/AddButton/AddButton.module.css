@@ -9,4 +9,9 @@
   border-radius: 50%;
   color: var(--color-background);
   font-size: 32px;
+  transition: transform .5s;
+}
+
+.animate {
+  transform: rotate(360deg);
 }

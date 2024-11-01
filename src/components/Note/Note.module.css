@@ -1,12 +1,81 @@
 .note {
-  height: 140px;
-  padding: 20px 10px;
+  height: 180px;
+  padding: 20px 30px 10px 10px;
   border-radius: 6px;
   font-size: 16px;
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .text {
   max-height: 110px;
   overflow: auto;
   color: var(--color-text);
+}
+
+.area {
+  max-height: 110px;
+  height: 100%;
+  overflow: auto;
+  color: var(--color-text);
+  font-size: inherit;
+  background-color: transparent;
+  border: none;
+  resize: none;
+  outline: none;
+  font-family: inherit;
+}
+
+.edit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: var(--color-text);
+  border-radius: 50%;
+
+  color: var(--color-background);
+  margin-top: auto;
+  align-self: flex-end;
+  position: absolute;
+
+  bottom: 10px;
+  right: 10px;
+}
+
+.save {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: var(--color-text);
+  border-radius: 50%;
+  position: absolute;
+  color: var(--color-background);
+  bottom: 10px;
+  right: 10px;
+}
+
+.edit-mode {
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.important {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: var(--color-text);
+  border-radius: 50%;
+  color: #ffce05;
+
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
