@@ -43,3 +43,26 @@
   position: relative;
   background-color: #00d4fe;
 }
+
+.warning {
+  animation: warning .5s infinite;
+}
+
+.edit {
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+@keyframes warning {
+  0% {
+    background-color: transparent;
+  }
+
+  50% {
+    background-color: var(--color-danger);
+  }
+
+  100% {
+    background-color: transparent;
+  }
+}

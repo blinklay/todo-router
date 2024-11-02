@@ -4,12 +4,25 @@ import styled from "./NotesList.module.css";
 import { AppContext } from "../../context";
 import Loader from "../Loader/Loader";
 import { FaCheck } from "react-icons/fa";
-export default function NotesList() {
-  const { notes, isCreateNoteMode, isLoading, dispatch } =
+
+const warningDelay = 1000;
+
+export default function NotesList({ notes }) {
+  const { isCreateNoteMode, isLoading, isEditing, dispatch } =
     useContext(AppContext);
   const [value, setValue] = useState("");
+  const [isWarning, setIsWarning] = useState(false);
 
   const onClick = () => {
+    if (value === "") {
+      setIsWarning(true);
+
+      setTimeout(() => {
+        setIsWarning(false);
+      }, warningDelay);
+
+      return;
+    }
     dispatch({
       type: "SUBMIT_CREATE_NOTE",
       payload: { text: value, color: isCreateNoteMode },
@@ -24,7 +37,9 @@ export default function NotesList() {
         <ul className={styled.notes}>
           {isCreateNoteMode && (
             <li
-              className={styled["new-note"]}
+              className={`${styled["new-note"]} ${
+                isWarning ? styled.warning : ""
+              } ${isEditing ? styled.edit : ""}`}
               style={{
                 background: isCreateNoteMode,
               }}

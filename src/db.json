@@ -2,25 +2,25 @@
   "notes": [
     {
       "text": "uptatibus, id minima est, sint quos, quia saepe recusandae esse similique i wan's your family now.",
-      "isImportant": false,
+      "isImportant": true,
       "color": "#fec971",
       "id": 0
     },
     {
-      "text": "id minima est, sint quos, quia saepe reload",
+      "text": "id minima est, sint quos, quia saepsd",
       "isImportant": true,
       "color": "#fe9b72",
       "id": 1
     },
     {
-      "text": "uptatibus, id minima est, sint quos, quia saepe recusandae esse similique vlo lo lol o",
-      "isImportant": false,
+      "text": "uptatibus, iasd uptatibus, iasd",
+      "isImportant": true,
       "color": "#e3ef8f",
       "id": 2
     },
     {
       "text": "lore lorem",
-      "isImportant": false,
+      "isImportant": true,
       "color": "#ff9b72",
       "id": 3
     },
@@ -29,6 +29,30 @@
       "isImportant": false,
       "color": "#ff9b72",
       "id": 4
+    },
+    {
+      "text": "asdad",
+      "isImportant": false,
+      "color": "#00d4fe",
+      "id": 5
+    },
+    {
+      "text": "lorem asdoasd adw  m asdoasd adw  m asdoasd adw ",
+      "isImportant": true,
+      "color": "#ff9b72",
+      "id": 6
+    },
+    {
+      "text": "qwe qwe qwe",
+      "isImportant": true,
+      "color": "#ff9b72",
+      "id": 7
+    },
+    {
+      "text": "stay herer...",
+      "isImportant": false,
+      "color": "#ff9b72",
+      "id": 8
     }
   ]
 }

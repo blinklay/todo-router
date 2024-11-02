@@ -36,9 +36,20 @@
 }
 
 .search:focus {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.15);
 }
 
 .search:focus+.line {
   transform: scaleX(1);
+}
+
+.button {
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  right: 20px;
+  background-color: #b693fc;
+  color: var(--color-background);
+  padding: 4px 8px;
+  border-radius: 6px;
 }

@@ -6,7 +6,7 @@ import { AppContext } from "../../context";
 import { FaCheck } from "react-icons/fa";
 
 export default function Note({ id, text, color, isImportant }) {
-  const {isEditing, dispatch } = useContext(AppContext);
+  const { isEditing, dispatch } = useContext(AppContext);
   const [isEdit, setIsEdit] = useState(false);
   const [value, setValue] = useState(text);
 
@@ -22,8 +22,33 @@ export default function Note({ id, text, color, isImportant }) {
     });
   };
 
+  const onDoubleClick = () => {
+    dispatch({
+      type: "SET_IMPORTANT_NTOE",
+      payload: {
+        text,
+        id,
+        color,
+        isImportant: !isImportant,
+      },
+    });
+  };
+
+  const onStartClick = () => {
+    dispatch({
+      type: "SET_IMPORTANT_NTOE",
+      payload: {
+        text,
+        id,
+        color,
+        isImportant: false,
+      },
+    });
+  };
+
   return (
     <li
+      onDoubleClick={onDoubleClick}
       className={`${styled.note} ${isEditing ? styled["edit-mode"] : ""}`}
       style={{
         background: color,
@@ -47,7 +72,7 @@ export default function Note({ id, text, color, isImportant }) {
           <div className={styled.text}>{text}</div>
 
           {isImportant && (
-            <button className={styled.important}>
+            <button className={styled.important} onClick={onStartClick}>
               <FaStar />
             </button>
           )}

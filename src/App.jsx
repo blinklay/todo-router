@@ -3,6 +3,7 @@ import Layout from "./components/Layout/Layout";
 import Home from "./pages/Home/Home";
 import { AppContext } from "./context";
 import { useEffect, useState } from "react";
+import Search from "./pages/Search/Search";
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -35,6 +36,24 @@ function App() {
           .finally(() => {
             setIsEditing(false);
             setIsCreateNoteMode(false);
+          });
+        break;
+
+      case "SET_IMPORTANT_NTOE":
+        setIsEditing(true);
+        fetch(`http://localhost:3000/notes/${payload.id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            text: payload.text,
+            isImportant: payload.isImportant,
+            color: payload.color,
+          }),
+        })
+          .then((res) => res.json())
+          .then(() => setRefreshPage(!refreshPage))
+          .finally(() => {
+            setIsEditing(false);
           });
         break;
 
@@ -79,6 +98,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="search/:query" element={<Search />} />
         </Route>
       </Routes>
     </AppContext.Provider>
