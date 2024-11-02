@@ -14,7 +14,10 @@ export default function Menu() {
         setIsAddNoteMode={setIsAddNoteMode}
       />
 
-      <ColorsList isAddNoteMode={isAddNoteMode} />
+      <ColorsList
+        isAddNoteMode={isAddNoteMode}
+        setIsAddNoteMode={setIsAddNoteMode}
+      />
     </div>
   );
 }

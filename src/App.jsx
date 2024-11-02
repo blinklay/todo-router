@@ -9,21 +9,33 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [refreshPage, setRefreshPage] = useState(false);
+  const [isCreateNoteMode, setIsCreateNoteMode] = useState(false);
+
   const dispatch = (action) => {
     const { type, payload } = action;
 
     switch (type) {
       case "CREATE_NOTE":
-        setNotes([
-          {
-            id: "asd2",
-            text: "",
+        setIsCreateNoteMode(payload);
+        break;
+
+      case "SUBMIT_CREATE_NOTE":
+        setIsEditing(true);
+        fetch("http://localhost:3000/notes", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            text: payload.text,
             isImportant: false,
-            isEdit: true,
-            color: payload,
-          },
-          ...notes,
-        ]);
+            color: payload.color,
+          }),
+        })
+          .then((res) => res.json())
+          .then(() => setRefreshPage(!refreshPage))
+          .finally(() => {
+            setIsEditing(false);
+            setIsCreateNoteMode(false);
+          });
         break;
 
       case "SUBMIT_CHANGES_NOTE":
@@ -61,7 +73,9 @@ function App() {
   }, [refreshPage]);
 
   return (
-    <AppContext.Provider value={{ notes, isLoading, isEditing, dispatch }}>
+    <AppContext.Provider
+      value={{ notes, isLoading, isEditing, isCreateNoteMode, dispatch }}
+    >
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />

@@ -2,11 +2,12 @@ import { useContext } from "react";
 import { COLORS } from "../../constants";
 import styled from "./ColorsList.module.css";
 import { AppContext } from "../../context";
-export default function ColorsList({ isAddNoteMode }) {
-  const { notes, dispatch } = useContext(AppContext);
+export default function ColorsList({ isAddNoteMode, setIsAddNoteMode }) {
+  const { dispatch } = useContext(AppContext);
 
   const createNote = (color) => {
     dispatch({ type: "CREATE_NOTE", payload: color });
+    setIsAddNoteMode(false);
   };
 
   return (
