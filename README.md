@@ -1,8 +1,45 @@
-# React + Vite
+# To-Do Application with React Router and Context API
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Это приложение списка дел, в котором можно добавлять задачи, изменять их важность, искать задачи по описанию, а также удалять выбранные задачи.
 
-Currently, two official plugins are available:
+## Функциональность
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Добавление задач**: Возможность добавлять новые задачи в список.
+- **Изменение важности**: Изменение статуса важности задачи.
+- **Поиск по описанию**: Поле ввода для поиска задач, переводящее на страницу `/search/:query`, где отображается список найденных задач.
+- **Удаление задач**: Клик по кнопке выбора переводит приложение в режим выбора задач, после чего можно удалить отмеченные задачи.
+- **Изменение статуса задачи**: При двойном клике по задаче её статус изменяется.
+
+## Скриншоты
+
+### Главная страница
+![Главная страница](./public/screen1.jpg)
+
+### Страница поиска
+![Страница поиска](./public/screen2.jpg)
+
+## Установка и запуск
+
+Чтобы запустить проект локально, выполните следующие команды:
+
+1. Клонируйте репозиторий:
+    ```bash
+    git clone https://github.com/blinklay/todo-router.git
+    cd todo-router
+    ```
+
+2. Установите зависимости:
+    ```bash
+    npm install
+    ```
+
+3. Запустите приложение:
+    ```bash
+    npm run dev
+    ```
+
+4. Запустите JSON-сервер с задержкой:
+    ```bash
+    json-server --watch src/db.json --delay 1100
+    ```
+
