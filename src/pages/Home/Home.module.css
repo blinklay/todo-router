@@ -1,3 +1,31 @@
-.header {
+.wrapper {
   margin-top: 40px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.choice {
+  padding: 2px 8px;
+  font-size: 16px;
+  background-color: #00d4fe;
+  border-radius: 4px;
+  font-weight: 600;
+  color: var(--color-background);
+}
+
+.delete {
+  font-size: 16px;
+  color: var(--color-danger);
+  font-weight: 700;
+}
+
+.nothing {
+  font-size: 21px;
+  font-weight: 500;
+  margin-top: 30px;
+}
+
+.active {
+  background-color: var(--color-danger);
 }

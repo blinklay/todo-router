@@ -89,6 +89,38 @@
   right: 10px;
 }
 
+.point {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--color-danger);
+  border: 5px solid transparent;
+  outline: 2px solid var(--color-danger);
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  outline-offset: 3px;
+  animation: load .3s;
+}
+
+.waiting {
+  animation: waiting .5s infinite ease-in;
+}
+
+@keyframes waiting {
+  0% {
+    transform: rotate(-3deg);
+  }
+
+  50% {
+    transform: rotate(3deg);
+  }
+
+  100% {
+    transform: rotate(-3deg);
+  }
+}
+
 @keyframes load {
   0% {
     transform: scale(0);

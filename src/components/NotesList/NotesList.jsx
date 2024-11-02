@@ -57,10 +57,11 @@ export default function NotesList({ notes }) {
               </button>
             </li>
           )}
-
-          {notes.map((note) => (
-            <Note key={note.id} {...note} />
-          ))}
+          {!isCreateNoteMode && notes.length === 0 && (
+            <div>Nothing found...</div>
+          )}
+          {notes.length > 0 &&
+            notes.map((note) => <Note key={note.id} {...note} />)}
         </ul>
       )}
     </>

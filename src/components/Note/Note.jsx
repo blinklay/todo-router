@@ -6,9 +6,11 @@ import { AppContext } from "../../context";
 import { FaCheck } from "react-icons/fa";
 
 export default function Note({ id, text, color, isImportant }) {
-  const { isEditing, dispatch } = useContext(AppContext);
+  const { isEditing, isChoiceMode, choiced, dispatch } = useContext(AppContext);
   const [isEdit, setIsEdit] = useState(false);
   const [value, setValue] = useState(text);
+
+  const isChoiced = choiced.includes(id);
 
   const onSubmit = () => {
     dispatch({
@@ -23,6 +25,7 @@ export default function Note({ id, text, color, isImportant }) {
   };
 
   const onDoubleClick = () => {
+    if (isChoiceMode) return;
     dispatch({
       type: "SET_IMPORTANT_NTOE",
       payload: {
@@ -46,10 +49,18 @@ export default function Note({ id, text, color, isImportant }) {
     });
   };
 
+  const toChoiced = () => {
+    if (!isChoiceMode) return;
+    dispatch({ type: "ADD_TO_CHOICED", payload: id });
+  };
+
   return (
     <li
+      onClick={toChoiced}
       onDoubleClick={onDoubleClick}
-      className={`${styled.note} ${isEditing ? styled["edit-mode"] : ""}`}
+      className={`${styled.note} ${isEditing ? styled["edit-mode"] : ""} ${
+        isChoiceMode ? styled.waiting : ""
+      }`}
       style={{
         background: color,
       }}
@@ -71,15 +82,19 @@ export default function Note({ id, text, color, isImportant }) {
         <>
           <div className={styled.text}>{text}</div>
 
-          {isImportant && (
+          {isChoiced && <div className={styled.point}></div>}
+
+          {!isChoiceMode && isImportant && (
             <button className={styled.important} onClick={onStartClick}>
               <FaStar />
             </button>
           )}
 
-          <button className={styled.edit} onClick={() => setIsEdit(true)}>
-            <MdModeEditOutline />
-          </button>
+          {!isChoiceMode && (
+            <button className={styled.edit} onClick={() => setIsEdit(true)}>
+              <MdModeEditOutline />
+            </button>
+          )}
         </>
       )}
     </li>

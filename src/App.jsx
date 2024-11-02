@@ -11,6 +11,8 @@ function App() {
   const [isEditing, setIsEditing] = useState(false);
   const [refreshPage, setRefreshPage] = useState(false);
   const [isCreateNoteMode, setIsCreateNoteMode] = useState(false);
+  const [isChoiceMode, setIsChoiseMode] = useState(false);
+  const [choiced, setChoiced] = useState([]);
 
   const dispatch = (action) => {
     const { type, payload } = action;
@@ -74,6 +76,42 @@ function App() {
             setIsEditing(false);
           });
         break;
+
+      case "SET_CHOICE_MODE":
+        setIsChoiseMode(payload);
+        break;
+
+      case "ADD_TO_CHOICED":
+        if (choiced.includes(payload)) {
+          setChoiced(choiced.filter((item) => item !== payload));
+        } else {
+          setChoiced([...choiced, payload]);
+        }
+        break;
+
+      case "DELETE_NOTES":
+        setIsEditing(true);
+
+        Promise.all(
+          choiced.map((item) =>
+            fetch(`http://localhost:3000/notes/${item}`, {
+              method: "DELETE",
+            }).then((res) => res.json())
+          )
+        )
+          .then(() => {
+            setRefreshPage(!refreshPage);
+          })
+          .finally(() => {
+            dispatch({ type: "CLEAR_CHOICED", payload: null });
+            dispatch({ type: "SET_CHOICE_MODE", payload: false });
+            setIsEditing(false);
+          });
+        break;
+
+      case "CLEAR_CHOICED":
+        setChoiced([]);
+        break;
       default:
       // nothing
     }
@@ -93,7 +131,15 @@ function App() {
 
   return (
     <AppContext.Provider
-      value={{ notes, isLoading, isEditing, isCreateNoteMode, dispatch }}
+      value={{
+        notes,
+        isLoading,
+        isEditing,
+        isCreateNoteMode,
+        isChoiceMode,
+        choiced,
+        dispatch,
+      }}
     >
       <Routes>
         <Route path="/" element={<Layout />}>
