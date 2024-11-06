@@ -1,22 +1,10 @@
 {
   "notes": [
     {
-      "text": "crow crow xrowq ",
-      "isImportant": false,
-      "color": "#00d4fe",
-      "id": 1
-    },
-    {
-      "text": "as af d",
-      "isImportant": false,
-      "color": "#e3ef8f",
-      "id": 2
-    },
-    {
-      "text": "oasd oasd as",
-      "isImportant": true,
-      "color": "#ff9b72",
-      "id": 3
+      "id": 0,
+      "text": "Lorem lorem lorem lorem",
+      "date": "22.09.2005",
+      "isImportant": false
     }
   ]
 }

@@ -1,45 +1,54 @@
 :root {
-  --color-background: #fff;
   --color-text: #151515;
-  --color-separator: #e9edf1;
-  --color-danger: #ff7272;
+  --color-background: #ffffff;
+  --color-placeholder: #c9c9c9;
+
+  --color-note-1: #fec971;
+  --color-note-2: #fe9b72;
+  --color-note-3: #b693fd;
+  --color-note-4: #00d4fe;
+  --color-note-5: #e4ef8f;
+
+  --color-star: #fdce01;
+  --color-border: #e8ebee;
 }
 
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 18px;
-  height: 100vh;
   color: var(--color-text);
+  line-height: 1.2;
   background-color: var(--color-background);
 }
 
 button,
-input {
-  border: none;
+input,
+textarea {
   background-color: transparent;
-  font-size: inherit;
+  border: none;
   font-family: inherit;
-  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 button {
   cursor: pointer;
 }
 
-a {
-  text-decoration: none;
-  font-family: inherit;
-  font-size: inherit;
+input,
+textarea {
+  outline: none;
 }
 
-input {
-  outline: none;
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 ul {
@@ -48,5 +57,5 @@ ul {
 
 #root {
   display: flex;
-  height: 100%;
+  width: 100%;
 }

@@ -1,23 +1,15 @@
-import { useState } from "react";
-import AddButton from "../AddButton/AddButton";
-import ColorsList from "../ColorsList/ColorsList";
+import { Link } from "react-router-dom";
 import styled from "./Menu.module.css";
-export default function Menu() {
-  const [isAddNoteMode, setIsAddNoteMode] = useState(false);
+import AddButton from "../AddButton/AddButton";
 
+export default function Menu() {
   return (
     <div className={styled.menu}>
-      <span className={styled.logo}>.notebook</span>
+      <Link to="/" className={styled.logo}>
+        .notebook
+      </Link>
 
-      <AddButton
-        isAddNoteMode={isAddNoteMode}
-        setIsAddNoteMode={setIsAddNoteMode}
-      />
-
-      <ColorsList
-        isAddNoteMode={isAddNoteMode}
-        setIsAddNoteMode={setIsAddNoteMode}
-      />
+      <AddButton />
     </div>
   );
 }
