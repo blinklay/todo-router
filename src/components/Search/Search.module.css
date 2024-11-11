@@ -23,3 +23,20 @@
 .search::placeholder {
   color: var(--color-placeholder);
 }
+
+.link {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--color-note-3);
+  padding: 5px 10px;
+  border-radius: 4px;
+  color: var(--color-background);
+  opacity: 0;
+  transition: opacity .3s;
+}
+
+.show {
+  opacity: 1;
+}

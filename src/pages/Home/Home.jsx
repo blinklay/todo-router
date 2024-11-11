@@ -29,7 +29,7 @@ export default function Home() {
           }}
         />
       )}
-      {!isLoading && <Notes />}
+      {!isLoading && <Notes notes={notes} />}
       {!isLoading && notes.length === 0 && <div>Nothing here...</div>}
     </div>
   );
