@@ -1,10 +1,18 @@
 {
   "notes": [
     {
-      "id": 0,
-      "text": "Lorem lorem lorem lorem",
-      "date": "22.09.2005",
-      "isImportant": false
+      "title": "gdsgdeg",
+      "text": "dfgdfg dfgdfg dfg",
+      "isImportant": false,
+      "color": "#00d3fe",
+      "id": 1
+    },
+    {
+      "title": "12qdfgd gdfg",
+      "text": "edwr2342",
+      "isImportant": false,
+      "color": "#b591fb",
+      "id": 2
     }
   ]
 }

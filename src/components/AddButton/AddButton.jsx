@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 import styled from "./AddButton.module.css";
 import { FaPlus } from "react-icons/fa";
 
-export default function AddButton({ onClick }) {
+export default function AddButton() {
   return (
-    <button className={styled.add} onClick={onClick}>
+    <Link className={styled.add} to="/add-note">
       <FaPlus />
-    </button>
+    </Link>
   );
 }

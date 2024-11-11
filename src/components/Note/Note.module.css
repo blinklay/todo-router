@@ -17,3 +17,8 @@
   margin-top: auto;
   align-self: flex-end;
 }
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+}

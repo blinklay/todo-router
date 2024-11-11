@@ -8,7 +8,7 @@ export default function Notes() {
   return (
     <ul className={styled.notes}>
       {notes.map((note) => (
-        <Note key={note.id} />
+        <Note key={note.id} {...note} />
       ))}
     </ul>
   );
