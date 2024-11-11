@@ -6,15 +6,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { addNoteAction } from "../../actions/addNoteAction";
 import { notesSelectCreating } from "../../selectors/notesSelec";
 import Loader from "../../components/Loader/Loader";
+import { motion } from "framer-motion";
+
+const initialFormData = {
+  title: "",
+  text: "",
+  color: "#fe9973",
+};
+
 export default function AddNote() {
   const isCreating = useSelector(notesSelectCreating);
   const dispatch = useDispatch();
 
-  const [formData, setFormData] = useState({
-    title: "",
-    text: "",
-    color: "#fe9973",
-  });
+  const [formData, setFormData] = useState(initialFormData);
 
   const changeActiveColor = (color) => {
     setFormData({
@@ -25,8 +29,9 @@ export default function AddNote() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-
+    if (formData.title === "" || formData.text === "") return;
     dispatch(addNoteAction(formData));
+    setFormData(initialFormData);
   };
 
   return (
@@ -35,18 +40,27 @@ export default function AddNote() {
 
       <form onSubmit={onSubmit} className={styled.form}>
         <div className={styled.colors}>
-          {COLORS.map((color) => (
-            <button
+          {COLORS.map((color, index) => (
+            <motion.button
+              initial={{ opacity: 0, y: 20, scale: 1 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                scale: color === formData.color ? 1.5 : 1,
+              }}
+              transition={{
+                opacity: { delay: index * 0.1, duration: 0.5 },
+                y: { delay: index * 0.1, duration: 0.5 },
+                scale: { duration: 0.3, ease: "easeOut" },
+              }}
               type="button"
-              onClick={() => changeActiveColor(color)}
-              className={`${styled.color} ${
-                color === formData.color ? styled.active : ""
-              }`}
+              className={`${styled.color}`}
               key={color}
               style={{
                 background: color,
               }}
-            ></button>
+              onClick={() => changeActiveColor(color)}
+            ></motion.button>
           ))}
         </div>
 

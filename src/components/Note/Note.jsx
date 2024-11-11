@@ -1,5 +1,6 @@
 import styled from "./Note.module.css";
 import { MdEdit } from "react-icons/md";
+import { motion } from "framer-motion";
 
 const changeString = (string, limit) => {
   if (string.length > limit) {
@@ -8,9 +9,12 @@ const changeString = (string, limit) => {
   return string;
 };
 
-export default function Note({ text, color, title }) {
+export default function Note({ index, text, color, title }) {
   return (
-    <li
+    <motion.li
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1, duration: 0.5 }}
       className={styled.note}
       style={{
         background: color,
@@ -21,6 +25,6 @@ export default function Note({ text, color, title }) {
       <button className={styled.edit}>
         <MdEdit />
       </button>
-    </li>
+    </motion.li>
   );
 }
