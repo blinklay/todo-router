@@ -6,15 +6,30 @@ import Loader from "../../components/Loader/Loader";
 import { MdDelete, MdEdit } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { removeNoteAction } from "../../actions/removeNoteAction";
-import { notesSelectDeleting } from "../../selectors/notesSelec";
+import {
+  notesSelectDeleting,
+  notesSelectEditing,
+} from "../../selectors/notesSelec";
+import AddForm from "../../components/AddForm/AddForm";
+import { editNodeAction } from "../../actions/editNodeAction";
 
 export default function SingleNote() {
   const { id } = useParams();
-  const navigate = useNavigate();
   const [note, setNote] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [pageNotFound, setPageNotFound] = useState(null);
   const isDeleting = useSelector(notesSelectDeleting);
+  const isEditing = useSelector(notesSelectEditing);
   const dispatch = useDispatch();
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [formData, setFormData] = useState({});
+
+  const changeActiveColor = (color) => {
+    setFormData({
+      ...formData,
+      color: color,
+    });
+  };
 
   useEffect(() => {
     setIsLoading(true);
@@ -30,35 +45,69 @@ export default function SingleNote() {
       })
       .catch((err) => {
         console.log(err.message);
-        navigate("/");
+        setPageNotFound(err.message);
       })
-      .finally(() => setIsLoading(false));
-  }, [isDeleting]);
+      .finally(() => {
+        setIsEditMode(false);
+        setIsLoading(false);
+      });
+  }, [isDeleting, isEditing]);
+
+  useEffect(() => {
+    setFormData({
+      title: note.title,
+      text: note.text,
+      color: note.color,
+      isImportant: note.isImportant,
+    });
+  }, [note]);
 
   const removeNote = () => {
     dispatch(removeNoteAction(id));
   };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (formData.title === "" || formData.text === "") return;
+    dispatch(editNodeAction({ id, formData }));
+  };
+
   return (
     <div className={styled.note}>
       {isLoading && <Loader />}
-      {!isLoading && (
+      {!pageNotFound && !isLoading && (
         <div className={styled.wrapper}>
-          <PageTitle>{note.title}</PageTitle>
+          {isEditMode ? (
+            <AddForm
+              formData={formData}
+              setFormData={setFormData}
+              changeActiveColor={changeActiveColor}
+              onSubmit={onSubmit}
+              isCreating={isEditing}
+            />
+          ) : (
+            <>
+              <PageTitle>{note.title}</PageTitle>
 
-          <div className={styled.text}>{note.text}</div>
+              <div className={styled.text}>{note.text}</div>
 
-          <div
-            className={`${styled.actions} ${isDeleting ? styled.deleting : ""}`}
-          >
-            <button onClick={removeNote} className={styled.remove}>
-              <MdDelete /> Delete
-            </button>
-            <button className={styled.edit}>
-              <MdEdit /> Edit
-            </button>
-          </div>
+              <div className={`${styled.actions}`}>
+                <button onClick={removeNote} className={styled.remove}>
+                  <MdDelete /> Delete
+                </button>
+                <button
+                  onClick={() => setIsEditMode(true)}
+                  className={styled.edit}
+                >
+                  <MdEdit /> Edit
+                </button>
+              </div>
+            </>
+          )}
         </div>
+      )}
+      {!isLoading && pageNotFound && (
+        <dic>{pageNotFound} - page Notes not found</dic>
       )}
     </div>
   );

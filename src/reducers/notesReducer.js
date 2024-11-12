@@ -2,7 +2,8 @@ const initialState = {
   notes: [],
   isLoading: false,
   isCreating: false,
-  isDeleting: false
+  isDeleting: false,
+  isEditing: false
 }
 
 export const notesReducer = (state = initialState, action) => {
@@ -31,6 +32,12 @@ export const notesReducer = (state = initialState, action) => {
       return {
         ...state,
         isDeleting: payload
+      }
+
+    case "SET_IS_EDITING":
+      return {
+        ...state,
+        isEditing: payload
       }
 
     default:

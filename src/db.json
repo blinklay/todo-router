@@ -1,3 +1,11 @@
 {
-  "notes": []
+  "notes": [
+    {
+      "title": "newnote newq note",
+      "text": "newnote newq note",
+      "isImportant": false,
+      "color": "#b591fb",
+      "id": 1
+    }
+  ]
 }
