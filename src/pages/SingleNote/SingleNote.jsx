@@ -118,7 +118,7 @@ export default function SingleNote() {
         </div>
       )}
       {!isLoading && pageNotFound && (
-        <dic>{pageNotFound} - page Notes not found</dic>
+        <PageTitle>Note page not found - {pageNotFound}</PageTitle>
       )}
     </div>
   );
