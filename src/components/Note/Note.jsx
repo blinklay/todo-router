@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeNoteAction } from "../../actions/removeNoteAction";
 import { notesSelectDeleting } from "../../selectors/notesSelec";
 import Loader from "../Loader/Loader";
+import StarButton from "../../StarButton/StarButton";
+import { toggleNoteStatusAction } from "../../actions/toggleNoteStatusAction";
 
 const changeString = (string, limit) => {
   if (string.length > limit) {
@@ -14,12 +16,21 @@ const changeString = (string, limit) => {
   return string;
 };
 
-export default function Note({ id, index, text, color, title }) {
+export default function Note({ id, index, text, color, title, isImportant }) {
   const dispatch = useDispatch();
   const isDeleting = useSelector(notesSelectDeleting);
 
   const removeNote = () => {
     dispatch(removeNoteAction(id));
+  };
+
+  const toggleImportant = () => {
+    dispatch(
+      toggleNoteStatusAction({
+        id,
+        formData: { text, title, color, isImportant },
+      })
+    );
   };
 
   return (
@@ -32,10 +43,21 @@ export default function Note({ id, index, text, color, title }) {
         background: color,
       }}
     >
-      <Link to={`/note/${id}`}>
+      <Link to={`/note/${id}`} className={styled.link}>
         <h3 className={styled.title}>{changeString(title, 15)}</h3>
         <div className={styled.text}>{changeString(text, 145)}</div>
       </Link>
+      {isImportant && (
+        <StarButton
+          onClick={toggleImportant}
+          isActive={isImportant}
+          style={{
+            position: "absolute",
+            top: "10px",
+            right: "10px",
+          }}
+        />
+      )}
       <button onClick={removeNote} className={styled.remove}>
         {isDeleting ? (
           <Loader

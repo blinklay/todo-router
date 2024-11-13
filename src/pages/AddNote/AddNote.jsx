@@ -5,11 +5,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { addNoteAction } from "../../actions/addNoteAction";
 import { notesSelectCreating } from "../../selectors/notesSelec";
 import AddForm from "../../components/AddForm/AddForm";
+import { COLORS } from "../../constants/colors";
+
+const getRandomColor = () => {
+  return COLORS[Math.floor(Math.random() * (4 + 1))];
+};
 
 const initialFormData = {
   title: "",
   text: "",
-  color: "#fe9973",
+  color: getRandomColor(),
 };
 
 export default function AddNote() {

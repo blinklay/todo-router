@@ -26,7 +26,7 @@ export default function Search() {
       />
 
       <Link
-        to={`/search/${value}`}
+        to={`/search/${value.trim()}`}
         className={`${styled.link} ${value.length > 0 ? styled.show : ""}`}
       >
         search

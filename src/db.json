@@ -1,11 +1,25 @@
 {
   "notes": [
     {
-      "title": "newnote newq note",
-      "text": "newnote newq note",
+      "title": "asdsadada",
+      "text": "asdad",
       "isImportant": false,
+      "color": "#e3ed8d",
+      "id": 2
+    },
+    {
+      "title": "state state state",
+      "text": "state 123 state 123",
+      "color": "#00d3fe",
+      "isImportant": false,
+      "id": 4
+    },
+    {
+      "title": "lorem lorem lorem",
+      "text": "lorem lorem lorem lorem lorem",
       "color": "#b591fb",
-      "id": 1
+      "isImportant": false,
+      "id": 5
     }
   ]
 }

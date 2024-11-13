@@ -12,6 +12,8 @@ import {
 } from "../../selectors/notesSelec";
 import AddForm from "../../components/AddForm/AddForm";
 import { editNodeAction } from "../../actions/editNodeAction";
+import StarButton from "../../StarButton/StarButton";
+import { toggleNoteStatusAction } from "../../actions/toggleNoteStatusAction";
 
 export default function SingleNote() {
   const { id } = useParams();
@@ -72,6 +74,10 @@ export default function SingleNote() {
     dispatch(editNodeAction({ id, formData }));
   };
 
+  const toggleImportant = () => {
+    dispatch(toggleNoteStatusAction({ id, formData }));
+  };
+
   return (
     <div className={styled.note}>
       {isLoading && <Loader />}
@@ -87,8 +93,13 @@ export default function SingleNote() {
             />
           ) : (
             <>
-              <PageTitle>{note.title}</PageTitle>
-
+              <div className={styled.header}>
+                <PageTitle>{note.title}</PageTitle>
+                <StarButton
+                  onClick={toggleImportant}
+                  isActive={note.isImportant}
+                />
+              </div>
               <div className={styled.text}>{note.text}</div>
 
               <div className={`${styled.actions}`}>
